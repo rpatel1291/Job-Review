@@ -1,0 +1,37 @@
+/**
+ * Problem: Minimum Scalar Product
+ * @author Ravi
+ */
+/*
+ * Given two vectors v1 and v2 of equal length. The scalar product of the vectors is a single number produced by sum of the products x1y1 + ... + xnyn.
+ * If you are allowed to permute the coordinates of each vector. What is the minimum possible scalar product.
+ * 
+ * Inputs:
+ * 		T - # of test cases
+ * 		N - # of coordinates in vector
+ * 		v1 - list of coordinates for vector v1 => represented by array
+ * 		v2 - list of coordinates for vector v2 => represented by array
+ *    
+ * Output:
+ * 		Case # X : Y
+ * 		where X is case number and Y is the resulting number 
+ * 
+ */
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Solution {
+	public static void main(String[] args) {
+		Scanner userInput = new Scanner(System.in);
+		System.out.println("Enter the number of cases to test? ");
+		int testCases = userInput.nextInt();
+		if(testCases == 0) {
+			System.out.println("There are no cases to test.");
+			System.out.println("Program end.");
+			System.exit(0);
+		}
+		System.out.println("Enter the number of ");
+		
+	}
+}
