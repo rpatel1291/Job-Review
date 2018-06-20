@@ -20,7 +20,6 @@
  */
 
 import java.util.Scanner;
-import java.io.IOError;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
