@@ -18,86 +18,86 @@
  *
  */
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 public class Solution {
 
 	public static void main(String[] args) {
-		
+
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("How many cases will be tested?");
 		int testCases = 0;
 		try {
 			testCases = userInput.nextInt();
-		} catch(InputMismatchException ime) {
+		} catch (InputMismatchException ime) {
 			System.out.println("Error: Input is not integer type");
 			System.exit(1);
 		}
-		if( testCases < 1) {
+		if (testCases < 1) {
 			System.out.println("No test cases");
 			System.exit(0);
 		}
-		int numberOfPainters = 0 , numberOfWalls = 0;
-		System.out.println("Enter the number of painters followed by number of walls: ");
-		try {
-			numberOfPainters = userInput.nextInt();
-			numberOfWalls = userInput.nextInt();
-		} catch(InputMismatchException ime) {
-			System.out.println("Error: Input is not integer type");
-			System.exit(1);
-		}
-		int[] wallArray = new int[numberOfWalls];
-		String[] inputArray = null;
-		System.out.println("Enter number of boards for each wall:");
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
-		try {
-			inputArray = br.readLine().split(" ");
-		} catch(IOException e) {
-			System.exit(1);
-		}
-		int i = 0, sum = 0;
-		for(String x: inputArray) {
-			
-			try{
-				wallArray[i++] = new Integer(x);
-				sum += new Integer(x);
-			} catch(NumberFormatException nfe) {
-				
+		int cases = 0;
+		while (cases < testCases) {
+			int numberOfPainters = 0, numberOfWalls = 0;
+			System.out.println("Enter the number of painters followed by number of walls: ");
+			try {
+				numberOfPainters = userInput.nextInt();
+				numberOfWalls = userInput.nextInt();
+			} catch (InputMismatchException ime) {
+				System.out.println("Error: Input is not integer type");
+				System.exit(1);
 			}
-		}
-		float avgBoards = (sum*1.0f)/numberOfPainters;
-		int[] boardsPerPainter = new int[numberOfPainters];
-		i = 0;
-		while(i< numberOfPainters) {
-			boardsPerPainter[i] = 0; 
-			i++;
-		}
-		i = 0; 
-		for(int x: wallArray) {
-			if(boardsPerPainter[i] < avgBoards) {
-				boardsPerPainter[i] += x;
+			int[] wallArray = new int[numberOfWalls];
+			String[] inputArray = null;
+			System.out.println("Enter number of boards for each wall:");
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+			try {
+				inputArray = br.readLine().split(" ");
+			} catch (IOException e) {
+				System.exit(1);
 			}
-			else {
+			int i = 0, sum = 0;
+			for (String x : inputArray) {
+
+				try {
+					wallArray[i++] = new Integer(x);
+					sum += new Integer(x);
+				} catch (NumberFormatException nfe) {
+
+				}
+			}
+			float avgBoards = (sum * 1.0f) / numberOfPainters;
+			int[] boardsPerPainter = new int[numberOfPainters];
+			i = 0;
+			while (i < numberOfPainters) {
+				boardsPerPainter[i] = 0;
 				i++;
-				boardsPerPainter[i] += x;
 			}
+			i = 0;
+			for (int x : wallArray) {
+				if (boardsPerPainter[i] < avgBoards) {
+					boardsPerPainter[i] += x;
+				} else {
+					i++;
+					boardsPerPainter[i] += x;
+				}
+			}
+
+			int max = 0;
+			for (int x : boardsPerPainter) {
+				if (max < x)
+					max = x;
+			}
+			System.out.println(max);
+			cases++;
 		}
-		
-		for(int x: boardsPerPainter) {
-			System.out.println(x);
-		}
-		
 		userInput.close();
-		
-		
-		
 	}
 
 }
